@@ -1,0 +1,11 @@
+# NODE
+* What is Node?
+* Brief intro
+ * The concept of running javascript code in our browser spans off from the browsers having an enabler, usually called a javascript engine. A javascript engine is a software component typically within a browser or other runtime environments like node, that executes JavaScript code.
+ Examples of javascript engines and their corresponding browsers are:
+ ** V8 used in google chrome
+ ** SpiderMonkey used by Mozilla in firefox and 
+ ** JavaScriptCore used by Apple for it's safari browser 
+
+# Node is a Javascript runtime environment that employs the use of google's V8 javascript engine
+

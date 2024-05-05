@@ -35,3 +35,20 @@ In relation to Node.js, a runtime environment refers to the software platform th
 ** In Summary:
 
 The Node.js runtime environment provides the foundation for running your JavaScript code outside of a web browser. It offers a JavaScript engine, event loop, modular system, and built-in APIs to enable efficient and scalable server-side development.
+
+
+
+# Functionalities
+1 when you run the command "node" without adding any additions to it, you enter into a mode designated as REPL(Read, evaluate, print and loop)
+  ** cons of the REPL are that we cannot save our code and we cannot edit the previously written code.
+
+
+# like the browser has the window object, node has the process as equivalent which provides information about and control over the current Node.js process.
+
+
+#libuv is this node highly optimised internal component library of code written in c(deals with input and output paths) that node can delegate to other parts of your system
+
+
+
+#libuv internal dive in
+*libuv is a multi platform support library with a focus on asynchronous i/o 

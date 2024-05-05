@@ -1,3 +1,4 @@
+# NODE FUNDAMENTALS AND DEEP DIVE.
 # NODE
 * What is Node?
 * Brief intro
@@ -52,3 +53,57 @@ The Node.js runtime environment provides the foundation for running your JavaScr
 
 #libuv internal dive in
 *libuv is a multi platform support library with a focus on asynchronous i/o 
+node.js allows us to make use of libuv by connecting to it with the node.js bindings, which allows the functionality in libuv to be used by our javascript
+
+============================================
+26 non-blocking and blocking functionalities
+============================================
+## 
+* Blocking functions are synchronous functions, whereas non blocking functions are asynchronous functions
+
+=====================
+#30 THE EVENT LOOP
+=====================
+The event loop is a component of node that is responsible for the callbacks that enable node to run/execute code asynchronously(do multiple things at once even though JavaScriptis single threaded)
+Absolutely! Here's a breakdown of callback queues in Node.js/JavaScript:
+
+Concept:
+
+- In Node.js, which is single-threaded, callback queues are a mechanism used to manage asynchronous operations.
+- When your code encounters an asynchronous operation (like reading a file, making a network request, or using `setTimeout`), it doesn't wait for that operation to complete before continuing.
+- Instead, the code registers a callback function with the event loop. This callback function contains the code that should be executed once the asynchronous operation finishes.
+- The callback function is then placed in a queue called the "callback queue."
+
+Event Loop:
+
+- The event loop is a core component in Node.js that continuously checks two main things:
+    - Stack: The event loop first checks the call stack. This is where synchronous code is executed line by line. As long as there's code in the call stack, the event loop keeps executing it.
+    - **Callback Queue:** Once the call stack is empty (meaning no more synchronous code to execute), the event loop moves on to the callback queue. It retrieves the first function from the queue and adds it to the call stack, where it's finally executed.
+
+Benefits:
+
+- Callback queues enable Node.js to handle multiple asynchronous operations concurrently without blocking the main thread. This is because the event loop can keep processing other code while waiting for asynchronous operations to finish.
+- They improve responsiveness because the event loop can continue executing other parts of your program while waiting for asynchronous tasks.
+
+Drawbacks:
+
+- Callback hell: Nesting callbacks deeply can make code hard to read and maintain. Promises and async/await offer more structured alternatives for handling asynchronous operations.
+
+**Alternatives:**
+
+- Promises: Promises provide a more structured way to handle asynchronous operations. They offer methods like `then` and `catch` to chain operations and handle potential errors.
+- Async/await: Async/await syntax builds on top of promises, allowing you to write asynchronous code that resembles synchronous code. This can improve readability and maintainability.
+
+Summary:
+
+- Callback queues are a fundamental concept in Node.js for handling asynchronous operations efficiently.
+- While they offer benefits like non-blocking I/O, consider using promises or async/await for improved code readability and maintainability as your projects grow.
+
+
+
+
+
+
+=========================
+EVENT LOOP AND IT'S PHASES
+=========================

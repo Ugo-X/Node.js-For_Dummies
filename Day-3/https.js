@@ -28,3 +28,7 @@ console.log(responseData);
 // when your run Node, make sure to use the new mjs extension
 
 console.log(require.cache);
+
+
+
+// we however decided that using index.js is not neccesary and it's backed by Ryan Dal in his speech about the complex logic behind using it.

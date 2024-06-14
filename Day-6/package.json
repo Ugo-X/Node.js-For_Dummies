@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "0g": "^0.4.2",
     "axios": "^1.7.2",
     "nodemon": "^3.1.3"
   }

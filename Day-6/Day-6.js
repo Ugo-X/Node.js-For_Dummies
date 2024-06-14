@@ -18,7 +18,7 @@
 
 // ##NODEMON
 
-// nodemon is an npm tool that helps develop Node.js applications when a file change is detected in the file directory
+// nodemon is an npm tool that helps develop Node.js applications by automatically restarting the node application when a file change is detected in the file directory. nodemon is an executable that we use to run our node code when our source code changes
 const axios = require('axios')
 axios.get("https://www.google.com").then((response)=>{
     console.log(response);
@@ -27,3 +27,5 @@ console.log('All done');
 }).catch((err)=>{
     console.error();('error:',err);
 })
+
+// you can install nodemon globally, by using the following command `npm install -g nodemon`

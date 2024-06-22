@@ -1,0 +1,3 @@
+// The csv-parse is a parser that converts csv(comma seperated values) text inputs into arrays and objects. it implements the Node.js stream API while providing other Api's for convenience such as the callback and sync Api
+// ** with Node.js stream Api, it is used when maximum power is needed,it ensures scalability byt treating data in the sense of a stream from the source to the destination. When working with large datasets, it would help read the code line by line and allow node to work line by line on it rather than waiting for all the data to be read before our node application can do anything.
+import {parse }  from "csv-parse"

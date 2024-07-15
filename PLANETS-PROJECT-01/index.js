@@ -5,46 +5,77 @@
 // import { parse }  from "csv-parse" --- the es6 method of doing this
 
 // // This method would help us see the raw data without any interpretation of the comma seperated value file (csv)
-const { parse } = require("csv-parse");
-// place holder for buffers
-const habitablePlanets = [];
-const fs = require("fs");
+// const { parse } = require("csv-parse");
+// // place holder for buffers
+// const habitablePlanets = [];
+// const fs = require("fs");
 
-// A function that filters habitable planets based on certain properties
-function isaHabitablePlanet(planet) {
-  if (
-    planet["koi_disposition"] === "CONFIRMED" &&
-    planet["koi_insol"] > 0.36 &&
-    planet["koi_insol"] < 1.1 &&
-    planet["koi_prad"] < 1.6
-  )
-    return planet;
+// // A function that filters habitable planets based on certain properties
+// function isaHabitablePlanet(planet) {
+//   if (
+//     planet["koi_disposition"] === "CONFIRMED" &&
+//     planet["koi_insol"] > 0.36 &&
+//     planet["koi_insol"] < 1.1 &&
+//     planet["koi_prad"] < 1.6
+//   )
+//     return planet;
+// }
+
+// fs.createReadStream("kepler_data.csv")
+//   .pipe(
+//     parse({
+//       comment: "#",
+//       columns: true,
+//     })
+//   )
+//   .on("data", (data) => {
+//     if (isaHabitablePlanet(data)) {
+//       habitablePlanets.push(data);
+//     }
+//   })
+//   .on("error", (err) => {
+//     console.log(err);
+//   })
+//   .on("end", () => {
+//     console.log(habitablePlanets.map(planet =>{
+//       return planet['kepler_name']
+     
+//     }));
+//     console.log(`${habitablePlanets.length} number of habitable planets found!`);
+//     console.log("computation is done, 'voila'");
+//   });
+
+
+// Redo to ascertain that i learnt it properly
+
+const { log } = require('console')
+const {parse} = require('csv-parse')
+const fs = require('fs')
+
+const habitablePlanets = []
+
+function isAHabitablePlanet(planet){
+  if (planet['koi_disposition'] === 'CONFIRMED' && planet['koi_prad'] < 1.6 && planet['koi_insol'] >0.36 && planet['koi_insol'] < 1.1) 
+  return planet
 }
 
-fs.createReadStream("kepler_data.csv")
-  .pipe(
-    parse({
-      comment: "#",
-      columns: true,
-    })
-  )
-  .on("data", (data) => {
-    if (isaHabitablePlanet(data)) {
-      habitablePlanets.push(data);
-    }
-  })
-  .on("error", (err) => {
-    console.log(err);
-  })
-  .on("end", () => {
-    console.log(habitablePlanets.map(planet =>{
-      return planet['kepler_name']
-     
-    }));
-    console.log(`${habitablePlanets.length} number of habitable planets found!`);
-    console.log("computation is done, 'voila'");
-  });
-
+fs.createReadStream('kepler_data.csv').pipe(parse({
+  comment: '#',
+  columns: true
+})).on('data', (data) =>{
+if(isAHabitablePlanet(data)){
+  habitablePlanets.push(data)
+}
+})
+.on('error', (err)=>{
+console.log(err,'there was an error');
+})
+.on('end', ()=>{
+  console.log(habitablePlanets.map((planet)=>{
+    return planet['kepler_name']
+  }));
+  console.log(`${habitablePlanets.length} is the number of habitable planets`);
+})
 // Buffers are objets that node uses to represent a collection of bytes
 // just to reiterate,columns are vertical and rows are horizontal
 
